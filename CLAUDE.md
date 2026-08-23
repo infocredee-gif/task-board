@@ -12,9 +12,32 @@
 
 https://github.com/infocredee-gif/task-board.git
 
+## デプロイ先
+
+https://infocredee-gif.github.io/task-board/
+
+`main` ブランチへの push をトリガーに GitHub Actions
+([.github/workflows/deploy.yml](.github/workflows/deploy.yml)) が
+ビルドして GitHub Pages に自動デプロイする。
+
 ## 技術スタック
 
-現時点では未確定。開発開始時にユーザーと相談の上で決定し、決定次第このセクションを更新すること。
+- React 18 (関数コンポーネント + Hooks。クラスコンポーネントは使わない)
+- Vite 5 (ビルド・開発サーバー。`@vitejs/plugin-react` を使用)
+- 素の CSS(コンポーネント単位のファイル分割。CSS Modules やCSS-in-JSは使わない)
+- 状態管理ライブラリは使わず、`useState` / `useEffect` の範囲で完結させる
+- データ永続化は `localStorage`(バックエンド API は現時点では無し)
+- ルーティングライブラリは未導入(単一画面のため)
+
+## コンポーネントの命名規約
+
+- コンポーネントファイルは `PascalCase.jsx`(例: `App.jsx`)。
+- コンポーネント名(関数名)はファイル名と一致させる。
+- 1ファイル1コンポーネントを基本とする。
+- スタイルはコンポーネントと同名の CSS ファイルを同じディレクトリに置く
+  (例: `App.jsx` ↔ `App.css`)。アプリ全体に関わるグローバルなスタイルのみ
+  `index.css` に置く。
+- エントリーポイントは `main.jsx` に固定する。
 
 ## 対応方針
 
